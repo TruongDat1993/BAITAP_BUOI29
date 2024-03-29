@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập buổi 29</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div style="width: 1100px; margin: 0 auto;">
+    <header class="display-4 my-4">Quản lý học viện nghiên cứu & Giảng dạy</header>
+    <!-- Phan tab menu -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#DanhSachHocVien" role="tab" data-toggle="tab">Danh sách Học Viện</a>
+      </li>
+    </ul>
+    <br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!--Danh sách sản phẩm -->
+      <div role="tabpanel" class="tab-pane in active" id="DanhSachHocVien">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- BEGIN BUTTOM THÊM MỚI -->
+            <button id="btnThemDoiTuong" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus mr-1"></i>
+              Thêm Mới
+            </button>
+            <!-- END BUTTON THÊM MỚI -->
+          </div>
+          <div class="col-md-4">
+            <!-- BEGIN TÌM KIẾM -->
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="txtSearch" placeholder="Nhập từ khóa"
+                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <!-- END TÌM KIẾM -->
+          </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="tblDoiTuong" id="tblDoiTuong">
+          <!-- BEGIN TABLE SẢN PHẨM -->
+          <h2 style="color: green;">Danh Sách Sinh viên</h2>
+          <table class="table table-bordered">
+            <thead>
+              <th>STT</th>
+              <th>Mã Số</th>
+              <th>Họ Tên</th>
+              <th>Địa Chỉ</th>
+              <th>Email</th>
+              <th>Công Việc</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="tblDanhSachDoiTuong"></tbody>
+          </table>
+          <!-- END TABLE SẢN PHẨM -->
+        </div>
+        <br />
+      </div>
+      <!-- Kết thúc danh sách sản phẩm -->
+    </div>
+
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 id="modalHeading" class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="form-group">
+                <select id="mySelect">
+                  <option>Đối tượng</option>
+                  <option value="student">Học viên</option>
+                  <option value="employee">Giảng viên</option>
+                  <option value="customer">Khách hàng</option>
+                </select>
+                <div id="render"></div>
+              </div>
+
+              <!-- <div class="form-group">
+                <label>Mã</label>
+                <input id="txtMa" class="form-control" placeholder="Nhập vào mã" />
+                <span id="spanMa" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Tên đối tượng</label>
+                <input id="tenDoiTuong" class="form-control" placeholder="Nhập vào tên đối tượng" />
+                <span id="spanDoiTuong" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input id="address" class="form-control" placeholder="Nhập vào địa chỉ" />
+                <span id="spanAddress" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input id="email" class="form-control" placeholder="Nhập vào email" />
+                <span id="spanEmail" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <select id="mySelect" onchange="showInput()">
+                  <option>Đối tượng</option>
+                  <option value="student">Học viên</option>
+                  <option value="employee">Giảng viên</option>
+                  <option value="customer">Khách hàng</option>
+                </select>
+              </div>
+              <div class="form-group" id="diemHV" style="display: none;">
+                <label>Điểm Toán</label>
+                <input id="diemToan" type="number" class="form-control" placeholder="Nhập vào điểm toán" />
+                <span id="spanDiemToan" class="text-danger"></span>
+                <label>Điểm Lý</label>
+                <input id="diemLy" type="number" class="form-control" placeholder="Nhập vào điểm lý" />
+                <span id="spanDiemLy" class="text-danger"></span>
+                <label>Điểm Hoá</label>
+                <input id="diemHoa" type="number" class="form-control" placeholder="Nhập vào điểm hoá" />
+                <span id="spanDiemHoa" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" id="luongGiangVien" style="display: none;">
+                <label>Ngày Công</label>
+                <input id="ngayCong" type="number" class="form-control" placeholder="Nhập vào số ngày công" />
+                <span id="spanNgayCong" class="text-danger"></span>
+                <label>Lương Theo Ngày</label>
+                <input id="luongNgay" type="number" class="form-control" placeholder="Nhập vào lương một ngày" />
+                <span id="spanLuongNgay" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" id="khachHang" style="display: none;">
+                <label>Tên Công ty</label>
+                <input id="tenCTY" type="text" class="form-control" placeholder="Nhập vào tên công ty" />
+                <span id="spanTenCTY" class="text-danger"></span>
+                <label>Giá Trị Hoá Đơn</label>
+                <input id="giaTriHoaDon" type="number" class="form-control" placeholder="Nhập vào trị giá hoá đơn" />
+                <span id="spanGiaTriHoaDon" class="text-danger"></span>
+                <label>Đánh Giá</label>
+                <input id="diemDanhGia" type="number" class="form-control" placeholder="Nhập vào điểm đánh giá" />
+                <span id="spanDiemDanhgia" class="text-danger"></span>
+              </div>
+            </div> -->
+            <!-- Modal footer -->
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
