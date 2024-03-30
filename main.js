@@ -2,7 +2,6 @@ import Student from "./student.js";
 import Customer from "./customer.js";
 import Employee from "./employee.js";
 import Person from "./person.js";
-import Validation from "./validation.js";
 let arrStudents = [];
 let arrEmployee = [];
 let arrCustomer = [];
