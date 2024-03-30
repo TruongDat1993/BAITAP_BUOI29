@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-</head>
+<link rel="stylesheet" href="./css/style.css">
+  </head>
 
 <body>
   <div style="width: 1100px; margin: 0 auto;">
@@ -31,6 +32,9 @@
               <i class="fa fa-plus mr-1"></i>
               Thêm Mới
             </button>
+
+
+
             <!-- END BUTTON THÊM MỚI -->
           </div>
           <div class="col-md-4">
@@ -42,6 +46,14 @@
                 <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
               </div>
             </div>
+            <div>
+              <select id="selectElement"  class="btn btn-success">
+                <option value="all"> Lọc Đối tượng</option>
+                <option value="student">Học viên</option>
+                <option value="employee">Giảng viên</option>
+                <option value="customer">Khách hàng</option>
+              </select>
+            </div>
             <!-- END TÌM KIẾM -->
           </div>
         </div>
@@ -49,7 +61,7 @@
         <div class="tblDoiTuong" id="tblDoiTuong">
           <!-- BEGIN TABLE SẢN PHẨM -->
           <h2 style="color: green;">Danh Sách Sinh viên</h2>
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="tableHocVien">
             <thead>
               <th>STT</th>
               <th>Mã Số</th>
@@ -61,6 +73,35 @@
             </thead>
             <tbody id="tblDanhSachDoiTuong"></tbody>
           </table>
+
+          <table class="table table-bordered" id="tableHocSinh" style="display: none;">
+            <thead>
+              <th>STT</th>
+              <th>Mã Số</th>
+              <th>Họ Tên</th>
+              <th>Địa Chỉ</th>
+              <th>Email</th>
+              <th>Công Việc</th>
+              <th>Điểm Trung Bình</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="tblDanhSachHocSinh"></tbody>
+          </table>
+
+          <table class="table table-bordered" id="tableEmployee" style="display: none;">
+            <thead>
+              <th>STT</th>
+              <th>Mã Số</th>
+              <th>Họ Tên</th>
+              <th>Địa Chỉ</th>
+              <th>Email</th>
+              <th>Công Việc</th>
+              <th>Tổng Lương</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="tblDanhSachGiangVien"></tbody>
+          </table>
+          
           <!-- END TABLE SẢN PHẨM -->
         </div>
         <br />

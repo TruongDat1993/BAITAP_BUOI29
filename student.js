@@ -9,6 +9,7 @@ export default class Student extends Person {
         this.toan = _Toan;
         this.hoa = _Hoa;
         this.ly = _Ly;
+        this.dtb = 0;
     }
     tinhDTB(){
         this.dtb = (this.toan + this.ly + this.hoa)/3;
